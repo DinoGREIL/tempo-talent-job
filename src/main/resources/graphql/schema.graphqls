@@ -1,0 +1,84 @@
+directive @specifiedBy(url: String!) on SCALAR
+scalar Date
+  @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
+
+type Query {
+  
+
+
+  searchReviews: [Review]
+  searchApplications: [Application]
+  searchAdvantages: [Advantage]
+  searchJobOffers: [JobOffer]
+  searchJobCategories:[JobCategory]
+  searchAvailabilities:[Availability]
+  searchJobs: [Job]
+}
+
+type Mutation {
+  
+
+
+  addReview(rating:Float, message:String, providedAt:Date):Review
+  deleteReview(id: Int!): Boolean
+  addApplication(candidateid:ID, jobofferid:ID, reviewid:ID):Application
+  deleteApplication(id: Int!): Boolean
+  addAdvantage(id: ID,name:String):Advantage
+  deleteAdvantage(id: Int!): Boolean
+  addJobOffer(description:String,startdate:Date,enddate:Date,salary:Int,jobid:ID):JobOffer
+  deleteJobOffer(id: Int!): Boolean
+  addJobCategory(id:ID, name:String):JobCategory
+  deleteJobCategory(id: Int!): Boolean
+  addAvailability(id:ID, startdate:Date,enddate:Date,  jobid:ID):Availability
+  deleteAvailability(id: Int!): Boolean
+  addJob(title:String, categoryid:ID):Job
+  deleteJob(id: Int!): Boolean
+}
+type Review {
+   id:Int
+
+  message:String
+  
+  
+  rating:Float
+  
+   providedAt:Date
+
+}
+type Application{
+   id:Int
+     candidate:Candidate
+    job_offer:JobOffer
+    review:Review
+}
+type Advantage{
+  id:Int
+
+  name:String
+}
+type JobOffer{
+  id:Int
+
+  description:String
+   startdate:Date
+   enddate:Date
+  salary:Int
+}
+type JobCategory{
+  id:Int
+  name:String
+}
+type Job{
+   id:Int
+ title:String
+ JobCategory category:JobCategory
+}
+type Availability{
+  id:Int
+
+  
+  startdate:Date
+   enddate:Date
+  
+   job:Job
+}
