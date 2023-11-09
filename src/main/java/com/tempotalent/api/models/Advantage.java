@@ -14,8 +14,8 @@ public class Advantage {
   @Column(length = 50)
   private String name;
 
-  @OneToMany(mappedBy = "advantage")
-  private Set<JobOffer> joboffers;
+  @ManyToMany(mappedBy = "advantage")
+  private Set<JobOfferAdvantage> jobOfferAdvantages;
 
   
 
@@ -43,8 +43,8 @@ public class Advantage {
   public void setName(String name) {
     this.name = name;
   }
-  public Set<JobOffer> getJobOffers() {
-    return joboffers;
+  public Set<JobOfferAdvantage> getJobOfferAdvantages() {
+    return jobOfferAdvantages;
   }
   
 }

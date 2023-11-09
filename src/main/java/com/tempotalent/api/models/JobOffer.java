@@ -1,6 +1,7 @@
 package com.tempotalent.api.models;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 import jakarta.persistence.*;
 
@@ -25,6 +26,8 @@ public class JobOffer {
   @JoinColumn(name = "job_id")
   private Job job;
 
+  @ManyToMany(mappedBy = "jobOffer")
+  private Set<JobOfferAdvantage> jobOfferAdvantages;
   public JobOffer() {}
 
   

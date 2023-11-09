@@ -22,7 +22,7 @@ class AdvantageControllerTests {
 
   @Test
   void searchAdvantages() {
-    var query = tester.document("query { companies { siret name } }");
+    var query = tester.document("query { searchAdvantages { id name } }");
     var results = query.execute().path("searchAdvantages").entityList(Advantage.class);
 
     assertTrue(results.get().size() > 0);
