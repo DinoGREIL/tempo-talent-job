@@ -24,7 +24,7 @@ class ReviewControllerTests {
 
   @Test
   void searchReviews() {
-    var query = tester.document("query { companies { siret name } }");
+    var query = tester.document("query { searchReviews { rating message } }");
     var results = query.execute().path("searchReviews").entityList(Review.class);
 
     assertTrue(results.get().size() > 0);

@@ -25,7 +25,7 @@ class JobControllerTests {
 
   @Test
   void searchJobs() {
-    var query = tester.document("query { companies { siret name } }");
+    var query = tester.document("query { searchJobs { title  } }");
     var results = query.execute().path("searchJobs").entityList(Job.class);
 
     assertTrue(results.get().size() > 0);

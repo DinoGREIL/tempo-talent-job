@@ -24,7 +24,7 @@ class ApplicationControllerTests {
 
   @Test
   void searchApplications() {
-    var query = tester.document("query { companies { siret name } }");
+    var query = tester.document("query { searchApplications { jobofferid reviewid } }");
     var results = query.execute().path("searchApplications").entityList(Application.class);
 
     assertTrue(results.get().size() > 0);
