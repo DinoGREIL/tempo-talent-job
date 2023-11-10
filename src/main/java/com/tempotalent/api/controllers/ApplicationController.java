@@ -32,7 +32,7 @@ public class ApplicationController implements GraphQLMutationResolver, GraphQLQu
 
   @MutationMapping
   public Application addApplication(@Argument UUID candidateid, @Argument UUID jobofferid, @Argument UUID reviewid) {
-    return applicationService.addApplication(candidateid,jobofferid,reviewid);
+    return applicationService.addApplication(jobofferid,reviewid);
   }
 
   @MutationMapping

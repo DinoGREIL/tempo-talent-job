@@ -20,13 +20,13 @@ public class JobOffer {
   private Date enddate;
   @Column(length = 50)
   private Integer salary;
-  
-
   @ManyToOne
-  @JoinColumn(name = "job_id")
+  @JoinColumn(name = "job")
   private Job job;
 
-  @ManyToMany(mappedBy = "jobOffer")
+  
+
+  @OneToMany(mappedBy = "jobOffer")
   private Set<JobOfferAdvantage> jobOfferAdvantages;
   public JobOffer() {}
 

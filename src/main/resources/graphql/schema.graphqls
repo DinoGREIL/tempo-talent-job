@@ -3,8 +3,6 @@ scalar Date
   @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
 
 type Query {
-  
-
 
   searchReviews: [Review]
   searchApplications: [Application]
@@ -21,7 +19,7 @@ type Mutation {
 
   addReview(rating:Float, message:String, providedAt:Date):Review
   deleteReview(id: Int!): Boolean
-  addApplication(candidateid:ID, jobofferid:ID, reviewid:ID):Application
+  addApplication(jobofferid:ID, reviewid:ID):Application
   deleteApplication(id: Int!): Boolean
   addAdvantage(id: ID,name:String):Advantage
   deleteAdvantage(id: Int!): Boolean
@@ -47,7 +45,7 @@ type Review {
 }
 type Application{
    id:Int
-     candidate:Candidate
+  
     job_offer:JobOffer
     review:Review
 }
@@ -71,7 +69,7 @@ type JobCategory{
 type Job{
    id:Int
  title:String
- JobCategory category:JobCategory
+  category:JobCategory
 }
 type Availability{
   id:Int

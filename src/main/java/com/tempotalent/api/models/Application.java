@@ -10,19 +10,24 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     //private Candidate candidate;
+    @ManyToOne
+    @JoinColumn(name = "job_offer")
     private JobOffer job_offer;
+    @ManyToOne
+    @JoinColumn(name = "review")
     private Review review;
 
     public Application() {
     }
 
-    public Application(UUID candidateid, UUID jobofferid, UUID reviewid) {
+    public Application( UUID jobofferid, UUID reviewid) {
         this.id = UUID.randomUUID();
+        
         this.job_offer = new JobOffer();
         //this.candidate = new Candidate();
         this.review = new Review();
         
-        this.job_offer.setId(candidateid);
+        this.job_offer.setId(jobofferid);
         //this.candidate.setId(jobofferid);
         this.review.setId(reviewid);
     }

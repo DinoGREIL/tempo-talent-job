@@ -9,12 +9,12 @@ import java.util.UUID;
 @IdClass(JobOfferAdvantageKey.class)
 public class JobOfferAdvantage {
   @Id
-  @Column(nullable = false)
-  private Integer idadvantage;
+  @Column(name = "idadvantage", nullable = false)
+  private Integer advantageId;
 
   @Id
-  @Column(nullable = false)
-  private UUID idjob_offer;
+  @Column(name = "idjob_offer", nullable = false)
+  private UUID jobOfferId;
 
 
 
@@ -31,8 +31,8 @@ public class JobOfferAdvantage {
   }
   
   public JobOfferAdvantage(Integer idadvantage, UUID idjob_offer) {
-    this.idadvantage = idadvantage;
-    this.idjob_offer = idjob_offer;
+    this.advantageId = idadvantage;
+    this.jobOfferId = idjob_offer;
     
   }
 

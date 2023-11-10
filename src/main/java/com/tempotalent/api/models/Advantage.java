@@ -14,7 +14,7 @@ public class Advantage {
   @Column(length = 50)
   private String name;
 
-  @ManyToMany(mappedBy = "advantage")
+  @OneToMany(mappedBy = "advantage")
   private Set<JobOfferAdvantage> jobOfferAdvantages;
 
   

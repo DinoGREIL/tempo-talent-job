@@ -20,7 +20,7 @@ class ApplicationControllerTests {
   @Autowired
   private GraphQlTester tester;
 
-  private final String createQuery = "mutation addApplication($candidateid:ID, $jobofferid:ID, $reviewid:ID){ addApplication(candidateid:$candidateid, jobofferid:$jobofferid, reviewid:$reviewid) { reviewid  } }";
+  private final String createQuery = "mutation addApplication( $jobofferid:ID, $reviewid:ID){ addApplication( jobofferid:$jobofferid, reviewid:$reviewid) { reviewid  } }";
 
   @Test
   void searchApplications() {
@@ -37,7 +37,7 @@ class ApplicationControllerTests {
   private Application addApplication() {
     var query = tester.document(createQuery);
     return query
-        .variable("candidateid", 5)
+        
         .variable("reviewid",4)
         .variable("jobofferid", 6).execute().path("addApplication")
         .entity(Application.class).get();

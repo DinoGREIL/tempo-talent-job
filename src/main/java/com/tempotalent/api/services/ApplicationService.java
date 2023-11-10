@@ -34,8 +34,8 @@ public class ApplicationService {
   
 
 
-  public Application addApplication(UUID candidateid, UUID jobofferid, UUID reviewid) {
-    var application = new Application( candidateid, jobofferid, reviewid);
+  public Application addApplication( UUID jobofferid, UUID reviewid) {
+    var application = new Application( jobofferid, reviewid);
     System.out.println("\001b[31m " + application.getId() + "\001b[0m");
     return repository.save(application);
   }
