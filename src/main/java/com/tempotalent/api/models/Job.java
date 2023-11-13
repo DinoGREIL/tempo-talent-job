@@ -9,13 +9,13 @@ import jakarta.persistence.*;
 public class Job {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private UUID id;
+  private Integer id;
 
   @Column(length = 50)
   private String title;
 
   @ManyToOne
-  @JoinColumn(name = "job_category_id")
+  @JoinColumn(name = "category")
   private JobCategory category;
 
   
@@ -24,18 +24,18 @@ public class Job {
 
   
 
-  public Job(String title, Integer categoryid) {
+  public Job(Integer id,String title, Integer categoryid) {
     this.title = title;
-    this.id=UUID.randomUUID();
+    this.id=id;
     this.category = new JobCategory();
     this.category.setId(categoryid);
   }
 
-  public UUID getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(UUID id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

@@ -18,7 +18,7 @@ public class Review {
   @Column(length = 50)
   private Float rating;
   
-  @Column(length = 50)
+  @Column(name="providedat",length = 50)
   private Date providedAt;
 
   

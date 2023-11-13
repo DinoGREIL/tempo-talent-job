@@ -34,7 +34,7 @@ public class JobOfferService {
   
 
 
-  public JobOffer addJobOffer(String description,Date startdate, Date enddate,Integer salary,UUID jobid) {
+  public JobOffer addJobOffer(String description,Date startdate, Date enddate,Integer salary,Integer jobid) {
     var job_offer = new JobOffer(description,startdate,enddate,salary,jobid);
     System.out.println("\001b[31m " + job_offer.getId() + "\001b[0m");
     return repository.save(job_offer);

@@ -31,7 +31,7 @@ public class JobOfferController implements GraphQLMutationResolver, GraphQLQuery
   }
 
   @MutationMapping
-  public JobOffer addJobOffer(@Argument String description,@Argument Date startdate,@Argument Date enddate,@Argument Integer salary,@Argument UUID jobid) {
+  public JobOffer addJobOffer(@Argument String description,@Argument Date startdate,@Argument Date enddate,@Argument Integer salary,@Argument Integer jobid) {
     return jobOfferService.addJobOffer(description,startdate,enddate,salary,jobid);
   }
 

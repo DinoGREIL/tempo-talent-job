@@ -7,5 +7,5 @@ import com.tempotalent.api.models.Availability;
 import java.util.UUID;
 
 @Repository
-public interface AvailabilityRepository extends JpaRepository<Availability, UUID> { 
+public interface AvailabilityRepository extends JpaRepository<Availability, Integer> { 
 }

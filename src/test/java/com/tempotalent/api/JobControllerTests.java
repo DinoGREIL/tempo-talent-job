@@ -45,7 +45,7 @@ class JobControllerTests {
 
   
 
-  private Boolean deleteJob(UUID uuid) {
+  private Boolean deleteJob(Integer uuid) {
     var query = tester.document("mutation deleteJob($id: ID!) {deleteJob(id: $id)}");
     return query.variable("id", uuid).execute().path("deleteJob").entity(Boolean.class).get();
   }

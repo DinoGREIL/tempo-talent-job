@@ -49,7 +49,7 @@ class AvailabilityControllerTests {
 
   
 
-  private Boolean deleteAvailability(UUID id) {
+  private Boolean deleteAvailability(Integer id) {
     var query = tester.document("mutation deleteAvailability($id: ID!) {deleteAvailability(id: $id)}");
     return query.variable("id", id).execute().path("deleteAvailability").entity(Boolean.class).get();
   }

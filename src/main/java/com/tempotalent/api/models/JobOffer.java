@@ -14,9 +14,9 @@ public class JobOffer {
 
   @Column(length = 50)
   private String description;
-  @Column(length = 50)
+  @Column(name="start",length = 50)
   private Date startdate;
-  @Column(length = 50)
+  @Column(name="end",length = 50)
   private Date enddate;
   @Column(length = 50)
   private Integer salary;
@@ -32,7 +32,7 @@ public class JobOffer {
 
   
 
-  public JobOffer(String description,Date startdate, Date enddate,Integer salary,UUID jobid) {
+  public JobOffer(String description,Date startdate, Date enddate,Integer salary,Integer jobid) {
     this.id=UUID.randomUUID();
     this.description = description;
     this.startdate=startdate;

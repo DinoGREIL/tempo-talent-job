@@ -31,12 +31,12 @@ public class JobController implements GraphQLMutationResolver, GraphQLQueryResol
   }
 
   @MutationMapping
-  public Job addJob(@Argument String title, @Argument Integer categoryid) {
-    return jobService.addJob(title,categoryid);
+  public Job addJob(@Argument Integer id,@Argument String title, @Argument Integer categoryid) {
+    return jobService.addJob(id,title,categoryid);
   }
 
   @MutationMapping
-  public Boolean deleteJob(@Argument UUID id) {
+  public Boolean deleteJob(@Argument Integer id) {
     return jobService.deleteJob(id);
   }
 

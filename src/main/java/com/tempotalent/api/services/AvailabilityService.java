@@ -25,7 +25,7 @@ public class AvailabilityService {
   }
 
   @Nullable
-  public Availability fetchById(UUID id) {
+  public Availability fetchById(Integer id) {
     return repository.findById(id).orElse(null);
   }
 
@@ -34,13 +34,13 @@ public class AvailabilityService {
   
 
 
-  public Availability addAvailability(UUID id, Date startdate, Date enddate,UUID jobid) {
+  public Availability addAvailability(Integer id, Date startdate, Date enddate,Integer jobid) {
     var availability = new Availability(id,startdate,enddate,jobid);
     System.out.println("\001b[31m " + availability.getId() + "\001b[0m");
     return repository.save(availability);
   }
 
-  public Boolean deleteAvailability(UUID id) {
+  public Boolean deleteAvailability(Integer id) {
     try {
       repository.deleteById(id);
       return true;
