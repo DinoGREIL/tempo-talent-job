@@ -1,7 +1,7 @@
 package com.tempotalent.api.controllers;
 
 import java.util.List;
-
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -31,12 +31,12 @@ public class AdvantageController implements GraphQLMutationResolver, GraphQLQuer
   }
 
   @MutationMapping
-  public Advantage addAdvantage(@Argument Integer id,@Argument String name) {
+  public Advantage addAdvantage(@Argument UUID id,@Argument String name) {
     return advantageService.addAdvantage(id,name);
   }
 
   @MutationMapping
-  public Boolean deleteAdvantage(@Argument Integer id) {
+  public Boolean deleteAdvantage(@Argument UUID id) {
     return advantageService.deleteAdvantage(id);
   }
 

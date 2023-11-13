@@ -21,7 +21,7 @@ class ApplicationControllerTests {
   private GraphQlTester tester;
 
   private final String createQuery = "mutation addApplication( $jobofferid:ID, $reviewid:ID){ addApplication( jobofferid:$jobofferid, reviewid:$reviewid) { reviewid  } }";
-
+  UUID idtotest=UUID.randomUUID();
   @Test
   void searchApplications() {
     var query = tester.document("query { searchApplications {  id } }");
@@ -36,10 +36,11 @@ class ApplicationControllerTests {
 
   private Application addApplication() {
     var query = tester.document(createQuery);
+    
     return query
         
-        .variable("reviewid",4)
-        .variable("jobofferid", 6).execute().path("addApplication")
+        .variable("reviewid",idtotest)
+        .variable("jobofferid", UUID.randomUUID()).execute().path("addApplication")
         .entity(Application.class).get();
   }
 
@@ -56,7 +57,7 @@ class ApplicationControllerTests {
     var application = addApplication();
     var deleted = deleteApplication(application.getId());
 
-    assertEquals(5, application.getReview().getId());
+    assertEquals(idtotest, application.getReview().getId());
     assertTrue(deleted);
   }
 

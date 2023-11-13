@@ -3,7 +3,7 @@ package com.tempotalent.api;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
+import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +38,13 @@ class JobCategoryControllerTests {
     var query = tester.document(createQuery);
     return query
         .variable("name", "Test JobCategory input")
-        .variable("id", 12).execute().path("addJobCategory")
+        .variable("id", UUID.randomUUID()).execute().path("addJobCategory")
         .entity(JobCategory.class).get();
   }
 
   
 
-  private Boolean deleteJobCategory(int id) {
+  private Boolean deleteJobCategory(UUID id) {
     var query = tester.document("mutation deleteJobCategory($id: ID!) {deleteJobCategory(id: $id)}");
     return query.variable("id", id).execute().path("deleteJobCategory").entity(Boolean.class).get();
   }

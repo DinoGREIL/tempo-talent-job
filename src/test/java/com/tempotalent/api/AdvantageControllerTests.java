@@ -3,6 +3,8 @@ package com.tempotalent.api;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.UUID;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureGraphQlTester;
@@ -36,13 +38,13 @@ class AdvantageControllerTests {
     var query = tester.document(createQuery);
     return query
         .variable("name", "Test Advantage input")
-        .variable("id", 12).execute().path("addAdvantage")
+        .variable("id", UUID.randomUUID()).execute().path("addAdvantage")
         .entity(Advantage.class).get();
   }
 
   
 
-  private Boolean deleteAdvantage(int id) {
+  private Boolean deleteAdvantage(UUID id) {
     var query = tester.document("mutation deleteAdvantage($id: ID!) {deleteAdvantage(id: $id)}");
     return query.variable("id", id).execute().path("deleteAdvantage").entity(Boolean.class).get();
   }

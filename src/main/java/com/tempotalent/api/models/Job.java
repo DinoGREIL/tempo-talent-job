@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class Job {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private UUID id;
 
   @Column(length = 50)
   private String title;
@@ -24,18 +24,18 @@ public class Job {
 
   
 
-  public Job(Integer id,String title, Integer categoryid) {
+  public Job(UUID id,String title, UUID categoryid) {
     this.title = title;
     this.id=id;
     this.category = new JobCategory();
     this.category.setId(categoryid);
   }
 
-  public Integer getId() {
+  public UUID getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 

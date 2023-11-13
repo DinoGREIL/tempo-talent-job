@@ -6,5 +6,5 @@ import java.util.UUID;
 import com.tempotalent.api.models.Job;
 
 @Repository
-public interface JobRepository extends JpaRepository<Job, Integer> { 
+public interface JobRepository extends JpaRepository<Job, UUID> { 
 }

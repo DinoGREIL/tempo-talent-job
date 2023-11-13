@@ -41,7 +41,7 @@ class JobOfferControllerTests {
         .variable("startdate", new Date())
         .variable("enddate",new Date())
         .variable("salary",1200)
-        .variable("jobid",12)
+        .variable("jobid",UUID.randomUUID())
         
         .execute().path("addJobOffer")
         .entity(JobOffer.class).get();

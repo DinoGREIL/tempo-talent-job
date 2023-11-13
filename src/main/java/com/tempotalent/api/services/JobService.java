@@ -25,7 +25,7 @@ public class JobService {
   }
 
   @Nullable
-  public Job fetchById(Integer id) {
+  public Job fetchById(UUID id) {
     return repository.findById(id).orElse(null);
   }
 
@@ -34,13 +34,13 @@ public class JobService {
   
 
 
-  public Job addJob(Integer id,String title, Integer categoryid) {
+  public Job addJob(UUID id,String title, UUID categoryid) {
     var job = new Job(id,title, categoryid);
     System.out.println("\001b[31m " + job.getId() + "\001b[0m");
     return repository.save(job);
   }
 
-  public Boolean deleteJob(Integer id) {
+  public Boolean deleteJob(UUID id) {
     try {
       repository.deleteById(id);
       return true;

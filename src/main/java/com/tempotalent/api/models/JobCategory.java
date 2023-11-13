@@ -2,6 +2,8 @@ package com.tempotalent.api.models;
 
 
 
+import java.util.UUID;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -9,7 +11,7 @@ import jakarta.persistence.*;
 public class JobCategory {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private UUID id;
 
   @Column(length = 50)
   private String name;
@@ -20,18 +22,18 @@ public class JobCategory {
 
   public JobCategory() {}
 
-  public JobCategory(Integer id, String name) {
+  public JobCategory(UUID id, String name) {
     this.id = id;
     this.name = name;
   }
 
   
 
-  public Integer getId() {
+  public UUID getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 

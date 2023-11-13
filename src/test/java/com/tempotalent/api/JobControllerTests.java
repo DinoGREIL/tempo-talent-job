@@ -39,13 +39,13 @@ class JobControllerTests {
     var query = tester.document(createQuery);
     return ((Path) query
         .variable("title", "test job input")
-        .variable("categoryid",12))
+        .variable("categoryid",UUID.randomUUID()))
         .entity(Job.class).get();
   }
 
   
 
-  private Boolean deleteJob(Integer uuid) {
+  private Boolean deleteJob(UUID uuid) {
     var query = tester.document("mutation deleteJob($id: ID!) {deleteJob(id: $id)}");
     return query.variable("id", uuid).execute().path("deleteJob").entity(Boolean.class).get();
   }

@@ -1,7 +1,7 @@
 package com.tempotalent.api.controllers;
 
 import java.util.List;
-
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -31,12 +31,12 @@ public class JobCategoryController implements GraphQLMutationResolver, GraphQLQu
   }
 
   @MutationMapping
-  public JobCategory addJobCategory(@Argument Integer id, @Argument String name) {
+  public JobCategory addJobCategory(@Argument UUID id, @Argument String name) {
     return jobCategoryService.addJobCategory(id,name);
   }
 
   @MutationMapping
-  public Boolean deleteJobCategory(@Argument Integer id) {
+  public Boolean deleteJobCategory(@Argument UUID id) {
     return jobCategoryService.deleteJobCategory(id);
   }
 

@@ -10,7 +10,7 @@ import java.util.UUID;
 public class JobOfferAdvantage {
   @Id
   @Column(name = "idadvantage", nullable = false)
-  private Integer advantageId;
+  private UUID advantageId;
 
   @Id
   @Column(name = "idjob_offer", nullable = false)
@@ -30,7 +30,7 @@ public class JobOfferAdvantage {
   public JobOfferAdvantage() {
   }
   
-  public JobOfferAdvantage(Integer idadvantage, UUID idjob_offer) {
+  public JobOfferAdvantage(UUID idadvantage, UUID idjob_offer) {
     this.advantageId = idadvantage;
     this.jobOfferId = idjob_offer;
     

@@ -31,12 +31,12 @@ public class AvailabilityController implements GraphQLMutationResolver, GraphQLQ
   }
 
   @MutationMapping
-  public Availability addAvailability(@Argument Integer id, @Argument Date startdate, @Argument Date enddate, @Argument Integer jobid) {
+  public Availability addAvailability(@Argument UUID id, @Argument Date startdate, @Argument Date enddate, @Argument UUID jobid) {
     return availabilityService.addAvailability(id,startdate,enddate,jobid);
   }
 
   @MutationMapping
-  public Boolean deleteAvailability(@Argument Integer id) {
+  public Boolean deleteAvailability(@Argument UUID id) {
     return availabilityService.deleteAvailability(id);
   }
 

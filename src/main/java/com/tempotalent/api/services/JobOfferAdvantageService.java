@@ -18,7 +18,7 @@ public class JobOfferAdvantageService {
     this.repository = repository;
   }
 
-  public JobOfferAdvantage addAdvantageToJobOffer(Integer advantageId, UUID jobOfferId) {
+  public JobOfferAdvantage addAdvantageToJobOffer(UUID advantageId, UUID jobOfferId) {
     var jobOfferAdvantage = new JobOfferAdvantage(advantageId, jobOfferId);
     jobOfferAdvantage.setAdvantage(new Advantage());
     jobOfferAdvantage.setJobOffer(new JobOffer());
@@ -27,7 +27,7 @@ public class JobOfferAdvantageService {
     return repository.save(jobOfferAdvantage);
   }
 
-  public Boolean removeAdvantageFromJobOffer(Integer advantageId, UUID jobOfferId) {
+  public Boolean removeAdvantageFromJobOffer(UUID advantageId, UUID jobOfferId) {
     var key = new JobOfferAdvantageKey(jobOfferId, advantageId);
     try {
       repository.deleteById(key);

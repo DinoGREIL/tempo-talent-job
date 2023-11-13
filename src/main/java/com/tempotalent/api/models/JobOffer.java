@@ -32,7 +32,7 @@ public class JobOffer {
 
   
 
-  public JobOffer(String description,Date startdate, Date enddate,Integer salary,Integer jobid) {
+  public JobOffer(String description,Date startdate, Date enddate,Integer salary,UUID jobid) {
     this.id=UUID.randomUUID();
     this.description = description;
     this.startdate=startdate;

@@ -9,14 +9,14 @@ CREATE TABLE
     );
     CREATE TABLE
     "job_category"(
-        "id" serial PRIMARY KEY,
+        "id" uuid PRIMARY KEY,
         "name" varchar(100)
     );
     CREATE TABLE
     "job"(
-        "id" serial PRIMARY KEY,
+        "id" uuid PRIMARY KEY,
         "title" varchar(50),
-        "category" integer REFERENCES "job_category" ("id")
+        "category" uuid REFERENCES "job_category" ("id")
 
     );
     
@@ -27,7 +27,7 @@ CREATE TABLE
         "start" date,
         "end" date,
         "salary" integer,
-        "job" integer REFERENCES "job" ("id")    
+        "job" uuid REFERENCES "job" ("id")    
     );
 CREATE TABLE
     "application" (
@@ -39,21 +39,21 @@ CREATE TABLE
     
     CREATE TABLE 
     "advantage"(
-        "id" serial  PRIMARY KEY ,
+        "id" uuid  PRIMARY KEY ,
         "name" varchar(50)
     );
     
     CREATE TABLE 
     "availability"(
-        "id" serial PRIMARY KEY,
-        "job" integer REFERENCES "job" ("id"),
+        "id" uuid PRIMARY KEY,
+        "job" uuid REFERENCES "job" ("id"),
         "start" date,
         "end" date 
     );
     CREATE TABLE
     "job_offeradvantage"(
         "idjob_offer" uuid REFERENCES  "job_offer" ("id"),
-        "idadvantage" integer REFERENCES "advantage" ("id")
+        "idadvantage" uuid REFERENCES "advantage" ("id")
     ) ;
 
 

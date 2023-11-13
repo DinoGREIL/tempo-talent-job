@@ -38,18 +38,18 @@ class AvailabilityControllerTests {
   private Availability addAvailability() {
     var query = tester.document(createQuery);
     return ((Path) query
-        .variable("id", 5)
+        .variable("id", UUID.randomUUID())
         
         .variable("startdate", new Date())
         .variable("enddate",new Date())
         
-        .variable("jobid",12))
+        .variable("jobid",UUID.randomUUID()))
         .entity(Availability.class).get();
   }
 
   
 
-  private Boolean deleteAvailability(Integer id) {
+  private Boolean deleteAvailability(UUID id) {
     var query = tester.document("mutation deleteAvailability($id: ID!) {deleteAvailability(id: $id)}");
     return query.variable("id", id).execute().path("deleteAvailability").entity(Boolean.class).get();
   }

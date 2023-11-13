@@ -10,12 +10,12 @@ public class JobOfferAdvantageKey implements Serializable {
   private UUID jobOfferId;
 
   @Column(name="idadvantage", nullable = false)
-  private Integer advantageId;
+  private UUID advantageId;
 
   public JobOfferAdvantageKey() {
   }
 
-  public JobOfferAdvantageKey(UUID jobOfferId, Integer advantageId) {
+  public JobOfferAdvantageKey(UUID jobOfferId, UUID advantageId) {
     this.jobOfferId = jobOfferId;
     this.advantageId = advantageId;
   }
@@ -24,7 +24,7 @@ public class JobOfferAdvantageKey implements Serializable {
     return jobOfferId;
   }
 
-  public Integer getAdvantage() {
+  public UUID getAdvantage() {
     return advantageId;
   }
 

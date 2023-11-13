@@ -10,7 +10,7 @@ import jakarta.persistence.*;
 public class Availability {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private UUID id;
 
   
   @Column(length = 50)
@@ -26,7 +26,7 @@ public class Availability {
 
   public Availability() {}
 
-  public Availability(Integer id, Date startdate, Date enddate,Integer jobid) {
+  public Availability(UUID id, Date startdate, Date enddate,UUID jobid) {
     this.id = id;
     
     this.startdate=startdate;
@@ -38,11 +38,11 @@ public class Availability {
 
   
 
-  public Integer getId() {
+  public UUID getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 
