@@ -10,6 +10,7 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
+import com.tempotalent.api.models.Advantage;
 import com.tempotalent.api.models.Review;
 import com.tempotalent.api.services.ReviewService;
 
@@ -30,7 +31,10 @@ public class ReviewController implements GraphQLMutationResolver, GraphQLQueryRe
     
     return reviewService.fetch();
   }
-
+  @QueryMapping
+  public Review reviewById(@Argument UUID id) {
+    return reviewService.fetchById(id);
+  }
   @MutationMapping
   public Review addReview(@Argument UUID id,@Argument Float rating,@Argument String message,@Argument LocalDate providedat) {
     return reviewService.addReview(id,rating,message,providedat);

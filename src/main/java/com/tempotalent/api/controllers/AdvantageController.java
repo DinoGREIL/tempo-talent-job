@@ -29,6 +29,10 @@ public class AdvantageController implements GraphQLMutationResolver, GraphQLQuer
     
     return advantageService.fetch();
   }
+  @QueryMapping
+  public Advantage advantageById(@Argument UUID id) {
+    return advantageService.fetchById(id);
+  }
 
   @MutationMapping
   public Advantage addAdvantage(@Argument UUID id,@Argument String name) {

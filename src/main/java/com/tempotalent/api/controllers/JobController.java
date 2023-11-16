@@ -9,6 +9,7 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
+import com.tempotalent.api.models.Advantage;
 import com.tempotalent.api.models.Job;
 import com.tempotalent.api.services.JobService;
 
@@ -29,7 +30,10 @@ public class JobController implements GraphQLMutationResolver, GraphQLQueryResol
     
     return jobService.fetch();
   }
-
+  @QueryMapping
+  public Job jobById(@Argument UUID id) {
+    return jobService.fetchById(id);
+  }
   @MutationMapping
   public Job addJob(@Argument UUID id,@Argument String title, @Argument UUID categoryid) {
     return jobService.addJob(id,title,categoryid);

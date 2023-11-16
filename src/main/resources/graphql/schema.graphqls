@@ -31,6 +31,13 @@ type Mutation {
   deleteAvailability(id: ID!): Boolean
   addJob(id:ID,title:String, categoryid:ID):Job
   deleteJob(id: ID!): Boolean
+  jobById(id: ID!): Job
+  advantageById(id: ID!): Advantage
+  applicationById(id: ID!): Application
+  availabilityById(id: ID!): Availability
+  jobCategoryById(id: ID!): JobCategory
+  jobOfferById(id: ID!): JobOffer
+  reviewById(id: ID!): Review
 }
 type Review {
    id:ID

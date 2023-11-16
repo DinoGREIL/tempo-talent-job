@@ -29,6 +29,10 @@ public class ApplicationController implements GraphQLMutationResolver, GraphQLQu
     
     return applicationService.fetch();
   }
+  @QueryMapping
+  public Application applicationById(@Argument UUID id) {
+    return applicationService.fetchById(id);
+  }
 
   @MutationMapping
   public Application addApplication( @Argument UUID jobofferid, @Argument UUID reviewid) {

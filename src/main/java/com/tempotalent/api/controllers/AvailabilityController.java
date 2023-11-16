@@ -10,6 +10,7 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
+import com.tempotalent.api.models.Advantage;
 import com.tempotalent.api.models.Availability;
 import com.tempotalent.api.services.AvailabilityService;
 
@@ -30,7 +31,10 @@ public class AvailabilityController implements GraphQLMutationResolver, GraphQLQ
     
     return availabilityService.fetch();
   }
-
+@QueryMapping
+  public Availability availabilityById(@Argument UUID id) {
+    return availabilityService.fetchById(id);
+  }
   @MutationMapping
   public Availability addAvailability(@Argument UUID id, @Argument LocalDate startdate, @Argument LocalDate enddate, @Argument UUID jobid) {
     return availabilityService.addAvailability(id,startdate,enddate,jobid);
