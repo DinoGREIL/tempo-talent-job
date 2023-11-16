@@ -19,17 +19,17 @@ public class Review {
   private Float rating;
   
   @Column(name="providedat",length = 50)
-  private Date providedAt;
+  private Date providedat;
 
   
 
   public Review() {}
 
-  public Review(UUID id,Float rating, String message,Date providedAt) {
+  public Review(UUID id,Float rating, String message,Date providedat) {
     this.id = id;
     this.message = message;
     this.rating=rating;
-    this.providedAt=providedAt;
+    this.providedat=providedat;
   }
 
   public UUID getId() {
@@ -55,10 +55,10 @@ public class Review {
     this.rating = rating;
   }
   public Date getProvidedAt() {
-    return providedAt;
+    return providedat;
   }
 
-  public void setProvidedAt(Date providedAt) {
-    this.providedAt = providedAt;
+  public void setProvidedAt(Date providedat) {
+    this.providedat = providedat;
   }
 }

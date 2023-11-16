@@ -17,7 +17,7 @@ type Mutation {
   
 
 
-  addReview(rating:Float, message:String, providedAt:Date):Review
+  addReview(id:ID,rating:Float, message:String, providedat:Date):Review
   deleteReview(id: ID!): Boolean
   addApplication(jobofferid:ID, reviewid:ID):Application
   deleteApplication(id: Int!): Boolean
@@ -40,7 +40,7 @@ type Review {
   
   rating:Float
   
-   providedAt:Date
+   providedat:Date
 
 }
 type Application{

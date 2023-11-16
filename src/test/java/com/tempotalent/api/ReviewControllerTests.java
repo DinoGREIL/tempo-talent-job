@@ -20,7 +20,7 @@ class ReviewControllerTests {
   @Autowired
   private GraphQlTester tester;
 
-  private final String createQuery = "mutation addReview($rating:Float, $message:String, $providedAt:Date){ addReview(rating:$rating, message:$message, providedAt:$providedAt) {id message  } }";
+  private final String createQuery = "mutation addReview($id:ID,$rating:Float, $message:String, $providedat:Date){ addReview(id:$id,rating:$rating, message:$message, providedat:$providedat) {id message  } }";
 
   @Test
   void searchReviews() {
@@ -40,7 +40,7 @@ class ReviewControllerTests {
     .variable("id",UUID.randomUUID())
         .variable("rating", 5.0)
         .variable("message","Test review input")
-        .variable("providedAt", new Date()).execute().path("addReview")
+        .variable("providedat", new Date()).execute().path("addReview")
         .entity(Review.class).get();
   }
 
