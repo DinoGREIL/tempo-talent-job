@@ -20,7 +20,7 @@ class AdvantageControllerTests {
   @Autowired
   private GraphQlTester tester;
 
-  private final String createQuery = "mutation addAdvantage($id:ID, $name:String){ addAdvantage(id:$id,name:$name) { name  } }";
+  private final String createQuery = "mutation addAdvantage($id:ID, $name:String){ addAdvantage(id:$id,name:$name) {id name  } }";
 
   @Test
   void searchAdvantages() {
@@ -30,15 +30,12 @@ class AdvantageControllerTests {
     assertTrue(results.get().size() > 0);
   }
 
-  
-
-  
-
   private Advantage addAdvantage() {
     var query = tester.document(createQuery);
     return query
+        .variable("id", "8e04fb60-9e21-4781-9246-2df648f7c1f9")
         .variable("name", "Test Advantage input")
-        .variable("id", UUID.randomUUID()).execute().path("addAdvantage")
+        .execute().path("addAdvantage")
         .entity(Advantage.class).get();
   }
 

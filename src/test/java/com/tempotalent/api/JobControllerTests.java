@@ -21,7 +21,7 @@ class JobControllerTests {
   @Autowired
   private GraphQlTester tester;
 
-  private final String createQuery = "mutation addJob($title:String, $categoryid:ID){ addJob(title:$title, categoryid:$categoryid) { title  } }";
+  private final String createQuery = "mutation addJob($title:String, $categoryid:ID){ addJob(title:$title, categoryid:$categoryid) { id title  } }";
 
   @Test
   void searchJobs() {

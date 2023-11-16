@@ -31,8 +31,8 @@ public class ReviewController implements GraphQLMutationResolver, GraphQLQueryRe
   }
 
   @MutationMapping
-  public Review addReview(@Argument Float rating,@Argument String message,@Argument Date providedAt) {
-    return reviewService.addReview(rating,message,providedAt);
+  public Review addReview(@Argument UUID id,@Argument Float rating,@Argument String message,@Argument Date providedAt) {
+    return reviewService.addReview(id,rating,message,providedAt);
   }
 
   @MutationMapping

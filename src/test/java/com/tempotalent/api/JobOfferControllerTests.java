@@ -20,7 +20,7 @@ class JobOfferControllerTests {
   @Autowired
   private GraphQlTester tester;
 
-  private final String createQuery = "mutation addJobOffer($description:String,$startdate:Date,$enddate:Date,$salary:Int,$jobid:ID){ addJobOffer(description:$description,startdate:$startdate,enddate:$enddate,salary:$salary,jobid:$jobid) { description  } }";
+  private final String createQuery = "mutation addJobOffer($description:String,$startdate:Date,$enddate:Date,$salary:Int,$jobid:ID){ addJobOffer(description:$description,startdate:$startdate,enddate:$enddate,salary:$salary,jobid:$jobid) { id description  } }";
 
   @Test
   void searchJobOffers() {

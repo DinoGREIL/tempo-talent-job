@@ -10,7 +10,7 @@ import jakarta.persistence.*;
 @Table(name = "job_category")
 public class JobCategory {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  
   private UUID id;
 
   @Column(length = 50)

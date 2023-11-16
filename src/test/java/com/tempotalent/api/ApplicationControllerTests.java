@@ -20,7 +20,7 @@ class ApplicationControllerTests {
   @Autowired
   private GraphQlTester tester;
 
-  private final String createQuery = "mutation addApplication( $jobofferid:ID, $reviewid:ID){ addApplication( jobofferid:$jobofferid, reviewid:$reviewid) { reviewid  } }";
+  private final String createQuery = "mutation addApplication( $jobofferid:ID, $reviewid:ID){ addApplication( jobofferid:$jobofferid, reviewid:$reviewid) {id reviewid  } }";
   UUID idtotest=UUID.randomUUID();
   @Test
   void searchApplications() {

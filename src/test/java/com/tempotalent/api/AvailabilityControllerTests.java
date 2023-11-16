@@ -21,11 +21,11 @@ class AvailabilityControllerTests {
   @Autowired
   private GraphQlTester tester;
 
-  private final String createQuery = "mutation addAvailability($id:ID, $startdate:Date,$enddate:Date,  $jobid:ID){ addAvailability(id:$id, startdate:$startdate,enddate:$enddate,  jobid:$jobid) { startdate  } }";
+  private final String createQuery = "mutation addAvailability($id:ID, $startdate:Date,$enddate:Date,  $jobid:ID){ addAvailability(id:$id, startdate:$startdate,enddate:$enddate,  jobid:$jobid) { id startdate  } }";
 
   @Test
   void searchAvailabilities() {
-    var query = tester.document("query { searchAvailabilities { startdate enddate } }");
+    var query = tester.document("query { searchAvailabilities { id  } }");
     var results = query.execute().path("searchAvailabilities").entityList(Availability.class);
 
     assertTrue(results.get().size() > 0);

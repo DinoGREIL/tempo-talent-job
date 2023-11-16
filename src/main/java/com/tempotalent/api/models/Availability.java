@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 @Table(name = "availability")
 public class Availability {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  
   private UUID id;
 
   
@@ -21,7 +21,7 @@ public class Availability {
   
 
   @ManyToOne
-  @JoinColumn(name = "job_id")
+  @JoinColumn(name = "job")
   private Job job;
 
   public Availability() {}

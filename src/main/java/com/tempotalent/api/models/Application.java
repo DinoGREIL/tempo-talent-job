@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "application")
 public class Application {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    
     private UUID id;
     //private Candidate candidate;
     @ManyToOne

@@ -9,14 +9,14 @@ import jakarta.persistence.*;
 @Table(name = "job_offer")
 public class JobOffer {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  
   private UUID id;
 
   @Column(length = 50)
   private String description;
-  @Column(name="start",length = 50)
+  @Column(name="startdate",length = 50)
   private Date startdate;
-  @Column(name="end",length = 50)
+  @Column(name="enddate",length = 50)
   private Date enddate;
   @Column(length = 50)
   private Integer salary;

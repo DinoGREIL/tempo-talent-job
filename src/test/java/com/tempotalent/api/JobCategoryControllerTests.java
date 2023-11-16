@@ -20,7 +20,7 @@ class JobCategoryControllerTests {
   @Autowired
   private GraphQlTester tester;
 
-  private final String createQuery = "mutation addJobCategory($id:ID, $name:String){ addJobCategory(id:$id,name:$name) { name  } }";
+  private final String createQuery = "mutation addJobCategory($id:ID, $name:String){ addJobCategory(id:$id,name:$name) { id name  } }";
 
   @Test
   void searchJobCategories() {
@@ -36,9 +36,10 @@ class JobCategoryControllerTests {
 
   private JobCategory addJobCategory() {
     var query = tester.document(createQuery);
-    return query
+    
+    return query.variable("id","a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
         .variable("name", "Test JobCategory input")
-        .variable("id", UUID.randomUUID()).execute().path("addJobCategory")
+        .execute().path("addJobCategory")
         .entity(JobCategory.class).get();
   }
 

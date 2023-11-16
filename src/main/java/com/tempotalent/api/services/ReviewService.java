@@ -34,8 +34,8 @@ public class ReviewService {
   
 
 
-  public Review addReview(Float rating, String message,Date providedAt) {
-    var review = new Review(UUID.randomUUID(), rating, message, providedAt);
+  public Review addReview(UUID id,Float rating, String message,Date providedAt) {
+    var review = new Review(id, rating, message, providedAt);
     System.out.println("\001b[31m " + review.getId() + "\001b[0m");
     return repository.save(review);
   }
