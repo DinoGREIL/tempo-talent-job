@@ -2,7 +2,8 @@ package com.tempotalent.api.models;
 
 
 import java.util.UUID;
-import java.util.Date;
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,13 +20,13 @@ public class Review {
   private Float rating;
   
   @Column(name="providedat",length = 50)
-  private Date providedat;
+  private LocalDate providedat;
 
   
 
   public Review() {}
 
-  public Review(UUID id,Float rating, String message,Date providedat) {
+  public Review(UUID id,Float rating, String message,LocalDate providedat) {
     this.id = id;
     this.message = message;
     this.rating=rating;
@@ -54,11 +55,11 @@ public class Review {
   public void setRating(Float rating) {
     this.rating = rating;
   }
-  public Date getProvidedAt() {
+  public LocalDate getProvidedAt() {
     return providedat;
   }
 
-  public void setProvidedAt(Date providedat) {
+  public void setProvidedAt(LocalDate providedat) {
     this.providedat = providedat;
   }
 }

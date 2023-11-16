@@ -2,7 +2,8 @@ package com.tempotalent.api.controllers;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.Date;
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -31,7 +32,7 @@ public class AvailabilityController implements GraphQLMutationResolver, GraphQLQ
   }
 
   @MutationMapping
-  public Availability addAvailability(@Argument UUID id, @Argument Date startdate, @Argument Date enddate, @Argument UUID jobid) {
+  public Availability addAvailability(@Argument UUID id, @Argument LocalDate startdate, @Argument LocalDate enddate, @Argument UUID jobid) {
     return availabilityService.addAvailability(id,startdate,enddate,jobid);
   }
 

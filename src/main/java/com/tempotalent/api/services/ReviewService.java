@@ -2,7 +2,8 @@ package com.tempotalent.api.services;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.Date;
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class ReviewService {
   
 
 
-  public Review addReview(UUID id,Float rating, String message,Date providedat) {
+  public Review addReview(UUID id,Float rating, String message,LocalDate providedat) {
     var review = new Review(id, rating, message, providedat);
     System.out.println("\001b[31m " + review.getId() + "\001b[0m");
     return repository.save(review);

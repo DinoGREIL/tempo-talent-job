@@ -25,8 +25,9 @@ public class Job {
   
 
   public Job(UUID id,String title, UUID categoryid) {
-    this.title = title;
     this.id=id;
+    this.title = title;
+    
     this.category = new JobCategory();
     this.category.setId(categoryid);
   }

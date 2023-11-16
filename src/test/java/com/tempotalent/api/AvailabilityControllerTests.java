@@ -2,7 +2,9 @@ package com.tempotalent.api;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import java.util.Date;
+
+import java.time.LocalDate;
+
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
@@ -10,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureGraphQlTester;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.GraphQlTester;
-import org.springframework.graphql.test.tester.GraphQlTester.Path;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tempotalent.api.models.Availability;
@@ -37,13 +39,14 @@ class AvailabilityControllerTests {
 
   private Availability addAvailability() {
     var query = tester.document(createQuery);
-    return ((Path) query
-        .variable("id", UUID.randomUUID())
+    return  query
+        .variable("id", "2240ba08-19e1-4038-beb0-40a4c5208349")
         
-        .variable("startdate", new Date())
-        .variable("enddate",new Date())
+        .variable("startdate", LocalDate.now())
+        .variable("enddate",LocalDate.now())
         
-        .variable("jobid",UUID.randomUUID()))
+        .variable("jobid","a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
+        .execute().path("addAvailability")
         .entity(Availability.class).get();
   }
 
@@ -60,7 +63,7 @@ class AvailabilityControllerTests {
     var availability = addAvailability();
     var deleted = deleteAvailability(availability.getId());
 
-    assertEquals(5, availability.getId());
+    assertEquals(UUID.fromString("2240ba08-19e1-4038-beb0-40a4c5208349"), availability.getId());
     assertTrue(deleted);
   }
 

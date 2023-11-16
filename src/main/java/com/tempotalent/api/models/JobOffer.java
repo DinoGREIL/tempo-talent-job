@@ -1,6 +1,7 @@
 package com.tempotalent.api.models;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 import java.util.Set;
 import java.util.UUID;
 import jakarta.persistence.*;
@@ -15,9 +16,9 @@ public class JobOffer {
   @Column(length = 50)
   private String description;
   @Column(name="startdate",length = 50)
-  private Date startdate;
+  private LocalDate startdate;
   @Column(name="enddate",length = 50)
-  private Date enddate;
+  private LocalDate enddate;
   @Column(length = 50)
   private Integer salary;
   @ManyToOne
@@ -32,7 +33,7 @@ public class JobOffer {
 
   
 
-  public JobOffer(String description,Date startdate, Date enddate,Integer salary,UUID jobid) {
+  public JobOffer(String description,LocalDate startdate, LocalDate enddate,Integer salary,UUID jobid) {
     this.id=UUID.randomUUID();
     this.description = description;
     this.startdate=startdate;
@@ -58,18 +59,18 @@ public class JobOffer {
     this.description = description;
   }
 
-  public Date getStartDate() {
+  public LocalDate getStartDate() {
     return startdate;
   }
 
-  public void setStartDate(Date startdate) {
+  public void setStartDate(LocalDate startdate) {
     this.startdate = startdate;
   }
-  public Date getEndDate() {
+  public LocalDate getEndDate() {
     return enddate;
   }
 
-  public void setEndDate(Date enddate) {
+  public void setEndDate(LocalDate enddate) {
     this.enddate = enddate;
   }
   public Integer getSalary() {

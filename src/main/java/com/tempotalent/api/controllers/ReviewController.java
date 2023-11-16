@@ -2,7 +2,8 @@ package com.tempotalent.api.controllers;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.Date;
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -31,7 +32,7 @@ public class ReviewController implements GraphQLMutationResolver, GraphQLQueryRe
   }
 
   @MutationMapping
-  public Review addReview(@Argument UUID id,@Argument Float rating,@Argument String message,@Argument Date providedat) {
+  public Review addReview(@Argument UUID id,@Argument Float rating,@Argument String message,@Argument LocalDate providedat) {
     return reviewService.addReview(id,rating,message,providedat);
   }
 

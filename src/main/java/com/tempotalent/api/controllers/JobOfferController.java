@@ -2,7 +2,8 @@ package com.tempotalent.api.controllers;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.Date;
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -31,7 +32,7 @@ public class JobOfferController implements GraphQLMutationResolver, GraphQLQuery
   }
 
   @MutationMapping
-  public JobOffer addJobOffer(@Argument String description,@Argument Date startdate,@Argument Date enddate,@Argument Integer salary,@Argument UUID jobid) {
+  public JobOffer addJobOffer(@Argument String description,@Argument LocalDate startdate,@Argument LocalDate enddate,@Argument Integer salary,@Argument UUID jobid) {
     return jobOfferService.addJobOffer(description,startdate,enddate,salary,jobid);
   }
 

@@ -6,7 +6,9 @@ import io.micrometer.common.lang.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
-import java.util.Date;
+
+import java.time.LocalDate;
+
 import com.tempotalent.api.models.Availability;
 
 import com.tempotalent.api.repositories.AvailabilityRepository;
@@ -34,7 +36,7 @@ public class AvailabilityService {
   
 
 
-  public Availability addAvailability(UUID id, Date startdate, Date enddate,UUID jobid) {
+  public Availability addAvailability(UUID id, LocalDate startdate, LocalDate enddate,UUID jobid) {
     var availability = new Availability(id,startdate,enddate,jobid);
     System.out.println("\001b[31m " + availability.getId() + "\001b[0m");
     return repository.save(availability);

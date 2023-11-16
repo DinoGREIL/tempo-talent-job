@@ -20,16 +20,16 @@ type Mutation {
   addReview(id:ID,rating:Float, message:String, providedat:Date):Review
   deleteReview(id: ID!): Boolean
   addApplication(jobofferid:ID, reviewid:ID):Application
-  deleteApplication(id: Int!): Boolean
+  deleteApplication(id: ID!): Boolean
   addAdvantage(id: ID,name:String):Advantage
   deleteAdvantage(id: ID!): Boolean
   addJobOffer(description:String,startdate:Date,enddate:Date,salary:Int,jobid:ID):JobOffer
-  deleteJobOffer(id: Int!): Boolean
+  deleteJobOffer(id: ID!): Boolean
   addJobCategory(id:ID, name:String):JobCategory
   deleteJobCategory(id: ID!): Boolean
   addAvailability(id:ID, startdate:Date,enddate:Date,  jobid:ID):Availability
   deleteAvailability(id: ID!): Boolean
-  addJob(title:String, categoryid:ID):Job
+  addJob(id:ID,title:String, categoryid:ID):Job
   deleteJob(id: ID!): Boolean
 }
 type Review {

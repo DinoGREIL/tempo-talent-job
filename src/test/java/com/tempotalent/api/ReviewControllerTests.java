@@ -4,7 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.UUID;
-import java.util.Date;
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureGraphQlTester;
@@ -20,7 +21,7 @@ class ReviewControllerTests {
   @Autowired
   private GraphQlTester tester;
 
-  private final String createQuery = "mutation addReview($id:ID,$rating:Float, $message:String, $providedat:Date){ addReview(id:$id,rating:$rating, message:$message, providedat:$providedat) {id message  } }";
+  private final String createQuery = "mutation addReview($id:ID,$rating:Float, $message:String, $providedat:Date){ addReview(id:$id,rating:$rating, message:$message, providedat:$providedat) {id message  rating } }";
 
   @Test
   void searchReviews() {
@@ -40,7 +41,7 @@ class ReviewControllerTests {
     .variable("id",UUID.randomUUID())
         .variable("rating", 5.0)
         .variable("message","Test review input")
-        .variable("providedat", new Date()).execute().path("addReview")
+        .variable("providedat", LocalDate.now()).execute().path("addReview")
         .entity(Review.class).get();
   }
 

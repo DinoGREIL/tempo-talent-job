@@ -2,7 +2,8 @@ package com.tempotalent.api.models;
 
 
 import java.util.UUID;
-import java.util.Date;
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -14,9 +15,9 @@ public class Availability {
 
   
   @Column(length = 50)
-  private Date startdate;
+  private LocalDate startdate;
   @Column(length = 50)
-  private Date enddate;
+  private LocalDate enddate;
   
   
 
@@ -26,7 +27,7 @@ public class Availability {
 
   public Availability() {}
 
-  public Availability(UUID id, Date startdate, Date enddate,UUID jobid) {
+  public Availability(UUID id, LocalDate startdate, LocalDate enddate,UUID jobid) {
     this.id = id;
     
     this.startdate=startdate;
@@ -48,18 +49,18 @@ public class Availability {
 
   
 
-  public Date getStartDate() {
+  public LocalDate getStartDate() {
     return startdate;
   }
 
-  public void setStartDate(Date startdate) {
+  public void setStartDate(LocalDate startdate) {
     this.startdate = startdate;
   }
-  public Date getEndDate() {
+  public LocalDate getEndDate() {
     return enddate;
   }
 
-  public void setEndDate(Date enddate) {
+  public void setEndDate(LocalDate enddate) {
     this.enddate = enddate;
   }
   

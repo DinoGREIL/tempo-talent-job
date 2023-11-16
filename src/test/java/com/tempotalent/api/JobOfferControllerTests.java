@@ -4,7 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.UUID;
-import java.util.Date;
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureGraphQlTester;
@@ -38,10 +39,10 @@ class JobOfferControllerTests {
     var query = tester.document(createQuery);
     return query
         .variable("description", "Test JobOffer input")
-        .variable("startdate", new Date())
-        .variable("enddate",new Date())
+        .variable("startdate", LocalDate.now())
+        .variable("enddate",LocalDate.now())
         .variable("salary",1200)
-        .variable("jobid",UUID.randomUUID())
+        .variable("jobid","a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
         
         .execute().path("addJobOffer")
         .entity(JobOffer.class).get();

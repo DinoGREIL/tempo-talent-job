@@ -6,7 +6,9 @@ import io.micrometer.common.lang.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
-import java.util.Date;
+
+import java.time.LocalDate;
+
 import com.tempotalent.api.models.JobOffer;
 
 import com.tempotalent.api.repositories.JobOfferRepository;
@@ -34,7 +36,7 @@ public class JobOfferService {
   
 
 
-  public JobOffer addJobOffer(String description,Date startdate, Date enddate,Integer salary,UUID jobid) {
+  public JobOffer addJobOffer(String description,LocalDate startdate, LocalDate enddate,Integer salary,UUID jobid) {
     var job_offer = new JobOffer(description,startdate,enddate,salary,jobid);
     System.out.println("\001b[31m " + job_offer.getId() + "\001b[0m");
     return repository.save(job_offer);
