@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import io.micrometer.common.lang.Nullable;
+
+import com.tempotalent.api.models.Availability;
 import com.tempotalent.api.models.JobCategory;
 
 import com.tempotalent.api.repositories.JobCategoryRepository;
@@ -26,7 +29,15 @@ public class JobCategoryService {
 
   @Nullable
   public JobCategory fetchById(UUID id) {
-    return repository.findById(id).orElse(null);
+    var jobCategory = new JobCategory();
+    jobCategory.setId(id);
+
+    var matcher = ExampleMatcher.matching()
+        .withMatcher("id", ExampleMatcher.GenericPropertyMatchers.exact());
+
+    var example = Example.of(jobCategory, matcher);
+
+    return repository.findOne(example).orElse(null);
   }
 
   

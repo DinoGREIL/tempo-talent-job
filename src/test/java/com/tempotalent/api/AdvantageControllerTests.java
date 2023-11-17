@@ -29,6 +29,15 @@ class AdvantageControllerTests {
 
     assertTrue(results.get().size() > 0);
   }
+  @Test
+  @Transactional
+  void testAdvantageById() {
+    var query = tester.document(
+        "query { advantageById(id: \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\") { id  } }");
+    var result = query.execute().path("advantageById").entity(Advantage.class).get();
+
+    assertEquals(UUID.fromString("a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"), result.getId());
+  }
 
   private Advantage addAdvantage() {
     var query = tester.document(createQuery);

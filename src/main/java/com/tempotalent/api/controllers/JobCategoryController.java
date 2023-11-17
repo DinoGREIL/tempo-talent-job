@@ -31,7 +31,7 @@ public class JobCategoryController implements GraphQLMutationResolver, GraphQLQu
     return jobCategoryService.fetch();
   }
   @QueryMapping
-  public JobCategory advantageById(@Argument UUID id) {
+  public JobCategory jobCategoryById(@Argument UUID id) {
     return jobCategoryService.fetchById(id);
   }
 

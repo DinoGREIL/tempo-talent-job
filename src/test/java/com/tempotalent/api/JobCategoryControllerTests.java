@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tempotalent.api.models.Availability;
 import com.tempotalent.api.models.JobCategory;
 
 @SpringBootTest
@@ -30,7 +31,15 @@ class JobCategoryControllerTests {
     assertTrue(results.get().size() > 0);
   }
 
-  
+  @Test
+  @Transactional
+  void testJobCategoryById() {
+    var query = tester.document(
+        "query { jobCategoryById(id: \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\") { id  } }");
+    var result = query.execute().path("jobCategoryById").entity(JobCategory.class).get();
+
+    assertEquals(UUID.fromString("a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"), result.getId());
+  }
 
   
 

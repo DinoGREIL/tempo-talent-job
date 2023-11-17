@@ -15,6 +15,7 @@ import org.springframework.graphql.test.tester.GraphQlTester;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tempotalent.api.models.Application;
 import com.tempotalent.api.models.Availability;
 
 @SpringBootTest
@@ -33,7 +34,15 @@ class AvailabilityControllerTests {
     assertTrue(results.get().size() > 0);
   }
 
-  
+  @Test
+  @Transactional
+  void testAvailabilityById() {
+    var query = tester.document(
+        "query { availabilityById(id: \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\") { id  } }");
+    var result = query.execute().path("availabilityById").entity(Availability.class).get();
+
+    assertEquals(UUID.fromString("a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"), result.getId());
+  }
 
   
 

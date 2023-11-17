@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 
 import io.micrometer.common.lang.Nullable;
 import org.springframework.stereotype.Service;
@@ -27,7 +29,15 @@ public class AdvantageService {
 
   @Nullable
   public Advantage fetchById(UUID id) {
-    return repository.findById(id).orElse(null);
+    var advantage = new Advantage();
+    advantage.setId(id);
+
+    var matcher = ExampleMatcher.matching()
+        .withMatcher("id", ExampleMatcher.GenericPropertyMatchers.exact());
+
+    var example = Example.of(advantage, matcher);
+
+    return repository.findOne(example).orElse(null);
   }
 
   

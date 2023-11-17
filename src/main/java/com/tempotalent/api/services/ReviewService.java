@@ -5,9 +5,12 @@ import java.util.UUID;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import io.micrometer.common.lang.Nullable;
+
+import com.tempotalent.api.models.JobOffer;
 import com.tempotalent.api.models.Review;
 
 import com.tempotalent.api.repositories.ReviewRepository;
@@ -27,7 +30,15 @@ public class ReviewService {
 
   @Nullable
   public Review fetchById(UUID id) {
-    return repository.findById(id).orElse(null);
+    var review = new Review();
+    review.setId(id);
+
+    var matcher = ExampleMatcher.matching()
+        .withMatcher("id", ExampleMatcher.GenericPropertyMatchers.exact());
+
+    var example = Example.of(review, matcher);
+
+    return repository.findOne(example).orElse(null);
   }
 
   

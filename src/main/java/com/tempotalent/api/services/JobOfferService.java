@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.UUID;
 import io.micrometer.common.lang.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
+import com.tempotalent.api.models.JobCategory;
 import com.tempotalent.api.models.JobOffer;
 
 import com.tempotalent.api.repositories.JobOfferRepository;
@@ -28,7 +30,15 @@ public class JobOfferService {
 
   @Nullable
   public JobOffer fetchById(UUID id) {
-    return repository.findById(id).orElse(null);
+    var jobOffer = new JobOffer();
+    jobOffer.setId(id);
+
+    var matcher = ExampleMatcher.matching()
+        .withMatcher("id", ExampleMatcher.GenericPropertyMatchers.exact());
+
+    var example = Example.of(jobOffer, matcher);
+
+    return repository.findOne(example).orElse(null);
   }
 
   

@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tempotalent.api.models.Job;
 import com.tempotalent.api.models.Review;
 
 @SpringBootTest
@@ -29,6 +30,15 @@ class ReviewControllerTests {
     var results = query.execute().path("searchReviews").entityList(Review.class);
 
     assertTrue(results.get().size() > 0);
+  }
+  @Test
+  @Transactional
+  void testReviewById() {
+    var query = tester.document(
+        "query { reviewById(id: \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\") { id  } }");
+    var result = query.execute().path("reviewById").entity(Review.class).get();
+
+    assertEquals(UUID.fromString("a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"), result.getId());
   }
 
   

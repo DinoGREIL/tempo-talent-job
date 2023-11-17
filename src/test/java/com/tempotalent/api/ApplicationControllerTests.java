@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tempotalent.api.models.Advantage;
 import com.tempotalent.api.models.Application;
 
 @SpringBootTest
@@ -29,7 +30,15 @@ class ApplicationControllerTests {
 
     assertTrue(results.get().size() > 0);
   }
+@Test
+  @Transactional
+  void testApplicationById() {
+    var query = tester.document(
+        "query { applicationById(id: \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\") { id  } }");
+    var result = query.execute().path("applicationById").entity(Application.class).get();
 
+    assertEquals(UUID.fromString("a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"), result.getId());
+  }
   
 
   
