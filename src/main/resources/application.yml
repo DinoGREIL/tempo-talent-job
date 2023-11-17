@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/postgres
+    url: jdbc:postgresql://job-db/postgres
     username: postgres
     password: postgres
   jpa:
@@ -12,6 +12,7 @@ spring:
     serialization:
       fail-on-empty-beans: false
   graphql:
+    path: /job
     graphiql:
       enabled: true
       path: /graphiql
