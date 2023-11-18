@@ -4,12 +4,13 @@ services:
   job-db:
     container_name: job-db
     image: postgres
+    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
-      - ./sql:/home/sql
-      - postgres_data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d/
+      - job-data:/var/lib/postgresql/data
     ports:
       - "5434:5432"
   job-service:
@@ -22,5 +23,6 @@ services:
       - job-db
 
 volumes:
-  postgres_data:
+  job-data:
+    name: job-data
 

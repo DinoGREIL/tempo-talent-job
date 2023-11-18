@@ -1,15 +1,13 @@
 directive @specifiedBy(url: String!) on SCALAR
-scalar Date
-  @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
+scalar Date @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
 
 type Query {
-
   searchReviews: [Review]
   searchApplications: [Application]
   searchAdvantages: [Advantage]
   searchJobOffers: [JobOffer]
-  searchJobCategories:[JobCategory]
-  searchAvailabilities:[Availability]
+  searchJobCategories: [JobCategory]
+  searchAvailabilities: [Availability]
   searchJobs: [Job]
   jobById(id: ID!): Job
   advantageById(id: ID!): Advantage
@@ -21,70 +19,67 @@ type Query {
 }
 
 type Mutation {
-  
-
-
-  addReview(id:ID,rating:Float, message:String, providedat:Date):Review
+  addReview(id: ID, rating: Float, message: String, providedat: Date): Review
   deleteReview(id: ID!): Boolean
-  addApplication(jobofferid:ID, reviewid:ID):Application
+  addApplication(jobofferid: ID, reviewid: ID): Application
   deleteApplication(id: ID!): Boolean
-  addAdvantage(id: ID,name:String):Advantage
+  addAdvantage(id: ID, name: String): Advantage
   deleteAdvantage(id: ID!): Boolean
-  addJobOffer(description:String,startdate:Date,enddate:Date,salary:Int,jobid:ID):JobOffer
+  addJobOffer(
+    description: String
+    startdate: Date
+    enddate: Date
+    salary: Int
+    jobid: ID
+  ): JobOffer
   deleteJobOffer(id: ID!): Boolean
-  addJobCategory(id:ID, name:String):JobCategory
+  addJobCategory(id: ID, name: String): JobCategory
   deleteJobCategory(id: ID!): Boolean
-  addAvailability(id:ID, startdate:Date,enddate:Date,  jobid:ID):Availability
+  addAvailability(
+    id: ID
+    startdate: Date
+    enddate: Date
+    jobid: ID
+  ): Availability
   deleteAvailability(id: ID!): Boolean
-  addJob(id:ID,title:String, categoryid:ID):Job
+  addJob(id: ID, title: String, categoryid: ID): Job
   deleteJob(id: ID!): Boolean
-  
 }
 type Review {
-   id:ID
+  id: ID
+  message: String
+  rating: Float
 
-  message:String
-  
-  
-  rating:Float
-  
-   providedat:Date
-
+  providedat: Date
 }
-type Application{
-   id:ID
-  
-    job_offer:JobOffer
-    review:Review
+type Application {
+  id: ID
+  job_offer: JobOffer
+  review: Review
 }
-type Advantage{
-  id:ID
-
-  name:String
+type Advantage {
+  id: ID
+  name: String
 }
-type JobOffer{
-  id:ID
-
-  description:String
-   startdate:Date
-   enddate:Date
-  salary:Int
+type JobOffer {
+  id: ID
+  description: String
+  startdate: Date
+  enddate: Date
+  salary: Int
 }
-type JobCategory{
-  id:ID
-  name:String
+type JobCategory {
+  id: ID
+  name: String
 }
-type Job{
-   id:ID
- title:String
-  category:JobCategory
+type Job {
+  id: ID
+  title: String
+  category: JobCategory
 }
-type Availability{
-  id:ID
-
-  
-  startdate:Date
-   enddate:Date
-  
-   job:Job
+type Availability {
+  id: ID
+  startdate: Date
+  enddate: Date
+  job: Job
 }
