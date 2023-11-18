@@ -6,21 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureGraphQlTester;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tempotalent.api.models.Availability;
+import com.tempotalent.AbstractTest;
 import com.tempotalent.api.models.JobCategory;
 
-@SpringBootTest
-@AutoConfigureGraphQlTester
-class JobCategoryControllerTests {
-  @Autowired
-  private GraphQlTester tester;
-
+class JobCategoryControllerTests extends AbstractTest {
   private final String createQuery = "mutation addJobCategory($id:ID, $name:String){ addJobCategory(id:$id,name:$name) { id name  } }";
 
   @Test
@@ -41,18 +32,14 @@ class JobCategoryControllerTests {
     assertEquals(UUID.fromString("a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"), result.getId());
   }
 
-  
-
   private JobCategory addJobCategory() {
     var query = tester.document(createQuery);
-    
-    return query.variable("id","a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
+
+    return query.variable("id", "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
         .variable("name", "Test JobCategory input")
         .execute().path("addJobCategory")
         .entity(JobCategory.class).get();
   }
-
-  
 
   private Boolean deleteJobCategory(UUID id) {
     var query = tester.document("mutation deleteJobCategory($id: ID!) {deleteJobCategory(id: $id)}");
@@ -69,5 +56,4 @@ class JobCategoryControllerTests {
     assertTrue(deleted);
   }
 
- 
 }

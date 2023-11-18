@@ -3,24 +3,16 @@ package com.tempotalent.api;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.UUID;
 import java.time.LocalDate;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureGraphQlTester;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tempotalent.api.models.Job;
+import com.tempotalent.AbstractTest;
 import com.tempotalent.api.models.JobOffer;
 
-@SpringBootTest
-@AutoConfigureGraphQlTester
-class JobOfferControllerTests {
-  @Autowired
-  private GraphQlTester tester;
+class JobOfferControllerTests extends AbstractTest {
 
   private final String createQuery = "mutation addJobOffer($description:String,$startdate:Date,$enddate:Date,$salary:Int,$jobid:ID){ addJobOffer(description:$description,startdate:$startdate,enddate:$enddate,salary:$salary,jobid:$jobid) { id description  } }";
 
@@ -42,22 +34,18 @@ class JobOfferControllerTests {
     assertEquals(UUID.fromString("a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"), result.getId());
   }
 
-  
-
   private JobOffer addJobOffer() {
     var query = tester.document(createQuery);
     return query
         .variable("description", "Test JobOffer input")
         .variable("startdate", LocalDate.now())
-        .variable("enddate",LocalDate.now())
-        .variable("salary",1200)
-        .variable("jobid","a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
-        
+        .variable("enddate", LocalDate.now())
+        .variable("salary", 1200)
+        .variable("jobid", "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
+
         .execute().path("addJobOffer")
         .entity(JobOffer.class).get();
   }
-
-  
 
   private Boolean deleteJobOffer(UUID uuid) {
     var query = tester.document("mutation deleteJobOffer($id: ID!) {deleteJobOffer(id: $id)}");
@@ -74,5 +62,4 @@ class JobOfferControllerTests {
     assertTrue(deleted);
   }
 
- 
 }

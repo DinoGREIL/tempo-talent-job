@@ -6,20 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureGraphQlTester;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tempotalent.AbstractTest;
 import com.tempotalent.api.models.Advantage;
 
-@SpringBootTest
-@AutoConfigureGraphQlTester
-class AdvantageControllerTests {
-  @Autowired
-  private GraphQlTester tester;
-
+class AdvantageControllerTests extends AbstractTest {
   private final String createQuery = "mutation addAdvantage($id:ID, $name:String){ addAdvantage(id:$id,name:$name) {id name  } }";
 
   @Test
@@ -29,6 +21,7 @@ class AdvantageControllerTests {
 
     assertTrue(results.get().size() > 0);
   }
+
   @Test
   @Transactional
   void testAdvantageById() {
@@ -48,8 +41,6 @@ class AdvantageControllerTests {
         .entity(Advantage.class).get();
   }
 
-  
-
   private Boolean deleteAdvantage(UUID id) {
     var query = tester.document("mutation deleteAdvantage($id: ID!) {deleteAdvantage(id: $id)}");
     return query.variable("id", id).execute().path("deleteAdvantage").entity(Boolean.class).get();
@@ -64,6 +55,4 @@ class AdvantageControllerTests {
     assertEquals("Test Advantage input", advantage.getName());
     assertTrue(deleted);
   }
-
- 
 }
