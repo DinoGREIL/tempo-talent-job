@@ -3,25 +3,16 @@ package com.tempotalent.api;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.UUID;
 import java.time.LocalDate;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureGraphQlTester;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tempotalent.api.models.Job;
+import com.tempotalent.AbstractTest;
 import com.tempotalent.api.models.Review;
 
-@SpringBootTest
-@AutoConfigureGraphQlTester
-class ReviewControllerTests {
-  @Autowired
-  private GraphQlTester tester;
-
+class ReviewControllerTests extends AbstractTest {
   private final String createQuery = "mutation addReview($id:ID,$rating:Float, $message:String, $providedat:Date){ addReview(id:$id,rating:$rating, message:$message, providedat:$providedat) {id message  rating } }";
 
   @Test
