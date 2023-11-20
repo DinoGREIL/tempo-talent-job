@@ -21,13 +21,13 @@ public class JobOfferAdvantageController implements GraphQLMutationResolver, Gra
   }
 
   @MutationMapping
-  public JobOfferAdvantage addAdvantageToJobOffer(@Argument UUID advantageId, @Argument UUID jobOfferId) {
-    return jobOfferAdvantageService.addAdvantageToJobOffer(advantageId, jobOfferId);
+  public JobOfferAdvantage addAdvantageToJobOffer(@Argument UUID idadvantage, @Argument UUID idjob_offer) {
+    return jobOfferAdvantageService.addAdvantageToJobOffer(idadvantage, idjob_offer);
   }
 
   @MutationMapping
-  public Boolean removeAdvantageFromJobOffer(@Argument UUID advantageId, @Argument UUID jobOfferId) {
-    return jobOfferAdvantageService.removeAdvantageFromJobOffer(advantageId, jobOfferId);
+  public Boolean removeAdvantageFromJobOffer(@Argument UUID idadvantage, @Argument UUID idjob_offer) {
+    return jobOfferAdvantageService.removeAdvantageFromJobOffer(idadvantage, idjob_offer);
   }
 }
 

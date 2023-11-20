@@ -10,11 +10,11 @@ import java.util.UUID;
 public class JobOfferAdvantage {
   @Id
   @Column(name = "idadvantage", nullable = false)
-  private UUID advantageId;
+  private UUID idadvantage;
 
   @Id
   @Column(name = "idjob_offer", nullable = false)
-  private UUID jobOfferId;
+  private UUID idjob_offer;
 
 
 
@@ -31,8 +31,8 @@ public class JobOfferAdvantage {
   }
   
   public JobOfferAdvantage(UUID idadvantage, UUID idjob_offer) {
-    this.advantageId = idadvantage;
-    this.jobOfferId = idjob_offer;
+    this.idadvantage = idadvantage;
+    this.idjob_offer = idjob_offer;
     
   }
 

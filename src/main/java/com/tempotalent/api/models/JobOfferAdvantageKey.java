@@ -7,25 +7,25 @@ import jakarta.persistence.Column;
 
 public class JobOfferAdvantageKey implements Serializable {
   @Column(name="idjob_offer", nullable = false)
-  private UUID jobOfferId;
+  private UUID idjob_offer;
 
   @Column(name="idadvantage", nullable = false)
-  private UUID advantageId;
+  private UUID idadvantage;
 
   public JobOfferAdvantageKey() {
   }
 
-  public JobOfferAdvantageKey(UUID jobOfferId, UUID advantageId) {
-    this.jobOfferId = jobOfferId;
-    this.advantageId = advantageId;
+  public JobOfferAdvantageKey(UUID idjob_offer, UUID idadvantage) {
+    this.idjob_offer = idjob_offer;
+    this.idadvantage = idadvantage;
   }
 
   public UUID getJobOffer() {
-    return jobOfferId;
+    return idjob_offer;
   }
 
   public UUID getAdvantage() {
-    return advantageId;
+    return idadvantage;
   }
 
   @Override
@@ -35,12 +35,12 @@ public class JobOfferAdvantageKey implements Serializable {
     if (!(o instanceof JobOfferAdvantageKey))
       return false;
     JobOfferAdvantageKey that = (JobOfferAdvantageKey) o;
-    return this.advantageId.equals(that.advantageId) && this.jobOfferId.equals(that.jobOfferId);
+    return this.idadvantage.equals(that.idadvantage) && this.idjob_offer.equals(that.idjob_offer);
   }
 
   @Override
   public int hashCode() {
-    return 31 * advantageId.hashCode() + jobOfferId.hashCode();
+    return 31 * idadvantage.hashCode() + idjob_offer.hashCode();
   }
 }
 

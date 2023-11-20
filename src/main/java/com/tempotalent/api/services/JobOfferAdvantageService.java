@@ -18,17 +18,17 @@ public class JobOfferAdvantageService {
     this.repository = repository;
   }
 
-  public JobOfferAdvantage addAdvantageToJobOffer(UUID advantageId, UUID jobOfferId) {
-    var jobOfferAdvantage = new JobOfferAdvantage(advantageId, jobOfferId);
+  public JobOfferAdvantage addAdvantageToJobOffer(UUID idadvantage, UUID idjob_offer) {
+    var jobOfferAdvantage = new JobOfferAdvantage(idadvantage, idjob_offer);
     jobOfferAdvantage.setAdvantage(new Advantage());
     jobOfferAdvantage.setJobOffer(new JobOffer());
-    jobOfferAdvantage.getAdvantage().setId(advantageId);
-    jobOfferAdvantage.getJobOffer().setId(jobOfferId);
+    jobOfferAdvantage.getAdvantage().setId(idadvantage);
+    jobOfferAdvantage.getJobOffer().setId(idjob_offer);
     return repository.save(jobOfferAdvantage);
   }
 
-  public Boolean removeAdvantageFromJobOffer(UUID advantageId, UUID jobOfferId) {
-    var key = new JobOfferAdvantageKey(jobOfferId, advantageId);
+  public Boolean removeAdvantageFromJobOffer(UUID idadvantage, UUID idjob_offer) {
+    var key = new JobOfferAdvantageKey(idjob_offer, idadvantage);
     try {
       repository.deleteById(key);
       return true;
