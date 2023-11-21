@@ -15,13 +15,13 @@ class JobOfferAdvantageControllerTests extends AbstractTest {
 
   @Test
   void testAddDeleteAdvantageToJobOffer() {
-    var query = tester.document("mutation removeAdvantagefromJobOffer($idadvantage: ID!,$idjob_offer:ID!) {removeAdvantagefromJobOffer(idadvantage:$idadvantage,idjob_offer: $idjob_offer)}");
+    var query = tester.document("mutation removeAdvantagefromJobOffer($id:ID!) {removeAdvantagefromJobOffer(id:$id)}");
     var deleted = query
-    .variable("idadvantage", "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
-    .variable("idjob_offer", "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
+    .variable("id", "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11")
+    
     .execute().path("removeAdvantagefromJobOffer").entity(Boolean.class).get();
     query = tester.document(
-        "mutation { addAdvantageToJobOffer(idadvantage: \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\", idjob_offer: \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\") { advantage { id } jobOffer { id } } }");
+        "mutation { addAdvantageToJobOffer(id:\"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\",idadvantage: \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\", idjob_offer: \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\") {id advantage { id } jobOffer { id } } }");
     var results = query.execute().path("addAdvantageToJobOffer").entity(JobOfferAdvantage.class).get();
     
 

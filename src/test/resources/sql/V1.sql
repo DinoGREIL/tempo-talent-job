@@ -62,6 +62,6 @@ INSERT INTO "job" (id,title,category) VALUES ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380
 INSERT INTO "availability"(id,job,"startdate","enddate") VALUES ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','2021-12-25','2021-12-29');
 INSERT INTO "job_offer" (id,description,"startdate","enddate",salary,job) VALUES ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','Cook for me','2021-12-25','2021-12-29',600,'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11');
 INSERT INTO "advantage" (id,name) VALUES ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','free food');
-INSERT INTO "job_offeradvantage" (idjob_offer,idadvantage) VALUES ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11');
+INSERT INTO "job_offeradvantage" (id,idjob_offer,idadvantage) VALUES ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11');
 INSERT INTO "review" (id,rating,message,providedat) VALUES ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11',4.5,'very good job','2021-12-29');
 INSERT INTO "application" (id,job_offer,review) VALUES ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11','a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11');
