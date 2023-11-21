@@ -6,25 +6,26 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "job_offeradvantage")
-@IdClass(JobOfferAdvantageKey.class)
+
 public class JobOfferAdvantage {
   @Id
+  @Column(name = "id", nullable = false)
   private UUID id;
-  @Column(name = "idadvantage", nullable = false)
+  @Column(name = "idadvantage", nullable = false,updatable=false)
   private UUID idadvantage;
 
   
-  @Column(name = "idjob_offer", nullable = false)
+  @Column(name = "idjob_offer", nullable = false,updatable=false)
   private UUID idjob_offer;
 
 
 
   @ManyToOne
-  @JoinColumn(name = "idadvantage", referencedColumnName = "id", insertable = false)
+  @JoinColumn(name = "idadvantage", referencedColumnName = "id", insertable = false,updatable=false)
   private Advantage advantage;
 
   @ManyToOne
-  @JoinColumn(name = "idjob_offer", referencedColumnName = "id", insertable = false)
+  @JoinColumn(name = "idjob_offer", referencedColumnName = "id", insertable = false,updatable=false)
   private JobOffer jobOffer;
 
 
