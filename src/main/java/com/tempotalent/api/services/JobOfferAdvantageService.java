@@ -18,8 +18,8 @@ public class JobOfferAdvantageService {
     this.repository = repository;
   }
 
-  public JobOfferAdvantage addAdvantageToJobOffer(UUID idadvantage, UUID idjob_offer) {
-    var jobOfferAdvantage = new JobOfferAdvantage(idadvantage, idjob_offer);
+  public JobOfferAdvantage addAdvantageToJobOffer(UUID id,UUID idadvantage, UUID idjob_offer) {
+    var jobOfferAdvantage = new JobOfferAdvantage(id,idadvantage, idjob_offer);
     jobOfferAdvantage.setAdvantage(new Advantage());
     jobOfferAdvantage.setJobOffer(new JobOffer());
     jobOfferAdvantage.getAdvantage().setId(idadvantage);
@@ -27,10 +27,10 @@ public class JobOfferAdvantageService {
     return repository.save(jobOfferAdvantage);
   }
 
-  public Boolean removeAdvantageFromJobOffer(UUID idadvantage, UUID idjob_offer) {
-    var key = new JobOfferAdvantageKey(idjob_offer, idadvantage);
+  public Boolean removeAdvantageFromJobOffer(UUID id) {
+    
     try {
-      repository.deleteById(key);
+      repository.deleteById(id);
       return true;
     } catch (Exception e) {
       return false;

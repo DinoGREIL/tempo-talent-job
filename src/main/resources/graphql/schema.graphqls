@@ -45,13 +45,15 @@ type Mutation {
   addJob(id: ID, title: String, categoryid: ID): Job
   deleteJob(id: ID!): Boolean
   addAdvantageToJobOffer(
+    id:ID
     idadvantage: ID
     idjob_offer: ID
     
   ): JobOfferAdvantage
-  removeAdvantagefromJobOffer(idadvantage: ID!, idjob_offer: ID!): Boolean
+  removeAdvantagefromJobOffer(id:ID!): Boolean
 }
 type JobOfferAdvantage {
+  id:ID
   idadvantage: ID
     idjob_offer: ID
 }
