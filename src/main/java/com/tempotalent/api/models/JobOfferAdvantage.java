@@ -9,11 +9,11 @@ import java.util.UUID;
 @IdClass(JobOfferAdvantageKey.class)
 public class JobOfferAdvantage {
   @Id
-  @Column(name = "idadvantage", nullable = false)
+  @Column(nullable = false)
   private UUID advantageId;
 
   @Id
-  @Column(name = "idjob_offer", nullable = false)
+  @Column(nullable = false)
   private UUID jobOfferId;
 
 

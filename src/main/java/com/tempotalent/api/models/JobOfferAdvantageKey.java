@@ -2,7 +2,7 @@ package com.tempotalent.api.models;
 
 import java.io.Serializable;
 import java.util.UUID;
-
+import java.util.Objects;
 import jakarta.persistence.Column;
 
 public class JobOfferAdvantageKey implements Serializable {
@@ -40,7 +40,7 @@ public class JobOfferAdvantageKey implements Serializable {
 
   @Override
   public int hashCode() {
-    return 31 * advantageId.hashCode() + jobOfferId.hashCode();
+    return Objects.hash( advantageId,jobOfferId);
   }
 }
 

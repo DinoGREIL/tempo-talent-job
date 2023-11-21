@@ -44,6 +44,12 @@ type Mutation {
   deleteAvailability(id: ID!): Boolean
   addJob(id: ID, title: String, categoryid: ID): Job
   deleteJob(id: ID!): Boolean
+  removeAdvantageFromJobOffer(advantageId: ID!,jobOfferId:ID!):Boolean
+  addAdvantageToJobOffer(
+    advantageId: ID
+    jobOfferId: ID
+    
+  ): JobOfferAdvantage
 }
 type Review {
   id: ID
@@ -82,4 +88,9 @@ type Availability {
   startdate: Date
   enddate: Date
   job: Job
+}
+type JobOfferAdvantage {
+  advantage: Advantage
+  jobOffer: JobOffer
+  
 }

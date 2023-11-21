@@ -53,7 +53,8 @@ CREATE TABLE
     CREATE TABLE
     "job_offeradvantage"(
         "idjob_offer" uuid REFERENCES  "job_offer" ("id"),
-        "idadvantage" uuid REFERENCES "advantage" ("id")
+        "idadvantage" uuid REFERENCES "advantage" ("id"),
+        PRIMARY KEY ("idjob_offer", "idadvantage")
     ) ;
 
 
