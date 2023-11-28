@@ -16,6 +16,8 @@ type Query {
   jobCategoryById(id: ID!): JobCategory
   jobOfferById(id: ID!): JobOffer
   reviewById(id: ID!): Review
+  getName: String
+    getJWTByUser: JWTTokenDto
 }
 
 type Mutation {
@@ -95,10 +97,7 @@ type JobOfferAdvantage {
   
 }
 
-type Query {
-    getName: String
-    getJWTByUser: JWTTokenDto
-}
+
 
 type JWTTokenDto {
     sub: String
