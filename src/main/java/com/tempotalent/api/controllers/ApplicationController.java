@@ -26,7 +26,7 @@ public class ApplicationController implements GraphQLMutationResolver, GraphQLQu
   }
 
   @QueryMapping
-  @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+  
   public List<Application> searchApplications() {
     
     return applicationService.fetch();
