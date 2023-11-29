@@ -11,15 +11,8 @@ import graphql.schema.GraphQLScalarType;
 
 @Configuration
 public class GraphQlConfig {
-     @Bean
-    public RuntimeWiringConfigurer runtimeWiringConfigurer(ObjectMapper objectMapper) {
-        GraphQLScalarType jsonScalarType = GraphQLScalarType.newScalar()
-                .name("JSON")
-                .description("A JSON scalar")
-                .coercing(new JsonNodeCoercing(objectMapper))
-                .build();
-
-        return wiringBuilder -> wiringBuilder
-                .scalar(jsonScalarType);
+    @Bean
+    RuntimeWiringConfigurer runtimeWiringConfigurer() {
+            return wiringBuilder -> wiringBuilder.scalar(ExtendedScalars.Date).scalar(ExtendedScalars.Json);
     }
 }
